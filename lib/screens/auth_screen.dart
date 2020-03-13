@@ -25,7 +25,9 @@ class AuthScreen extends StatelessWidget {
                 logoColor: Color.fromARGB(255, 58, 173, 173),
               ),
             ),
-            AuthPart(),
+            AuthPart(
+              authLogin: (_authType == 0) ? true : false,
+            ),
           ],
         ),
       ),

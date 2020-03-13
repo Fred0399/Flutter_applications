@@ -5,12 +5,24 @@ const inputHeightPercent = 30;
 const buttonHeightPercent = 60 * 100 / 736;
 
 class AuthPart extends StatefulWidget {
+  final bool authLogin;
+  AuthPart({this.authLogin=true});
   @override
   AuthPartState createState() => AuthPartState();
 }
 
 class AuthPartState extends State<AuthPart> {
   bool _isLogin = true;
+  bool _isLoaded=false;
+
+  @override
+  void didChangeDependencies() {
+    if(!_isLoaded){
+      _isLogin=widget.authLogin;
+    }
+    _isLoaded=true;
+    super.didChangeDependencies();
+  }
 
   Widget login(Size screenSize) {
     final _priceFocusNode = FocusNode();
