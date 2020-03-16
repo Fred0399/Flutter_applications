@@ -47,6 +47,14 @@ flutter:
   assets:
    - assets/images/background.png
    - assets/images/logo.png
+   - assets/images/bus.png
+   - assets/images/car.png
+   - assets/images/hotel.png
+   - assets/images/plane.png
+   - assets/images/profilicon.png
+   - assets/images/train.png
+   - assets/images/tramvai.png
+   - assets/images/arrow.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import './screens/enter_screen.dart';
 import './screens/auth_screen.dart';
+import 'screens/services.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       home: EnterScreen(),
       routes: {
         AuthScreen.routeName: (ctx) => AuthScreen(),
+        Services.routeName: (ctx) => Services(),
       },
     );
   }

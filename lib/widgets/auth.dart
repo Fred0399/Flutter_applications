@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/services.dart';
 
 const inputWidthPercent = 76.65;
 const inputHeightPercent = 30;
@@ -198,7 +199,7 @@ class AuthPartState extends State<AuthPart> {
                   child: FlatButton(
                     onPressed: () {
                       setState(() {
-                        // _isLogin = !_isLogin;
+                        Navigator.of(context).pushReplacementNamed(Services.routeName);
                       });
                     },
                     child: Text(
