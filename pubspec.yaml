@@ -55,7 +55,18 @@ flutter:
    - assets/images/train.png
    - assets/images/tramvai.png
    - assets/images/arrow.png
-
+   - assets/images/busbottom.png
+   - assets/images/carbottom.png
+   - assets/images/clock.png
+   - assets/images/hotelbottom.png
+   - assets/images/planebottom.png
+   - assets/images/planeup.png
+   - assets/images/rightarrow.png
+   - assets/images/shield.png
+   - assets/images/trainbottom.png
+   - assets/images/tramvaibottom.png
+   - assets/images/wallet.png
+   - assets/images/rightArrowSearch.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
