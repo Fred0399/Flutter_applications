@@ -6,6 +6,7 @@ import 'providers/bottomAppBar_data.dart';
 import 'providers/travel_choices_data.dart';
 import 'screens/services.dart';
 import './screens/search.dart';
+import './screens/search_info.dart';
 
 void main() => runApp(MyApp());
 
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
           AuthScreen.routeName: (ctx) => AuthScreen(),
           Services.routeName: (ctx) => Services(),
           Search.routeName: (ctx) => Search(),
+          SearchInfo.routeName: (ctx) => SearchInfo(),
         },
       ),
     );

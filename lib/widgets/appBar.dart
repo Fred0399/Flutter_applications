@@ -7,7 +7,8 @@ const arrowAppBarHeightPercent = 75 * 100 / 736;
 
 class CustomAppBar extends StatelessWidget {
   final content;
-  CustomAppBar({this.content});
+  final Function func;
+  CustomAppBar({this.content, this.func});
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +29,7 @@ class CustomAppBar extends StatelessWidget {
               child: IconButton(
                 icon: Image.asset('assets/images/arrow.png'),
                 // iconSize: 100,
-                onPressed: () {
-                  print("BACK");
-                },
+                onPressed: func,
               ),
             ),
           ),

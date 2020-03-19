@@ -20,11 +20,18 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
   @override
+  void initState() {
+    Future.delayed(Duration.zero).then((_) {
+      final string = ModalRoute.of(context).settings.arguments as String;
+      Provider.of<AppBarElements>(context, listen: false).selectElement(string);
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final dataProvider = Provider.of<AppBarElements>(context);
-    int index=0;
-    print('build');
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -38,6 +45,9 @@ class _SearchState extends State<Search> {
             ),
             CustomAppBar(
               content: 'Search',
+              func: () {
+                Navigator.of(context).pop();
+              },
             ),
             SizedBox(
               height: 27,
@@ -132,7 +142,7 @@ class _SearchState extends State<Search> {
                     ),
                   ),
                   Divider(
-                    thickness: 2,
+                    thickness: 1.5,
                     indent: screenSize.width * 11 / 100,
                     endIndent: screenSize.width * 11 / 100,
                   ),
@@ -149,6 +159,9 @@ class _SearchState extends State<Search> {
                             status: data.items[index].status,
                             price: data.items[index].price,
                             amount: data.items[index].count,
+                            func: () {
+                              Navigator.of(context).pushNamed('/info',arguments: data.items[index].price);
+                            },
                           );
                         },
                         itemCount: data.items.length,
@@ -163,12 +176,12 @@ class _SearchState extends State<Search> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: dataProvider.items.map((val) {
-                        index++;
                         Widget widget = SizedBox();
                         if (val.isSelected) {
                           widget = Container(
                             decoration: BackGroundGradient.gradBox(
-                                BorderRadius.circular(5)),
+                              BorderRadius.circular(5),
+                            ),
                             width: bottomAppBarBoxWidthPercent *
                                 screenSize.width /
                                 100,
@@ -194,12 +207,7 @@ class _SearchState extends State<Search> {
                             color: Colors.grey,
                           );
                         }
-                        return GestureDetector(
-                          onTap: () {
-                            dataProvider.selectElement(index);
-                          },
-                          child: widget,
-                        );
+                        return widget;
                       }).toList(),
                     ),
                   ),
