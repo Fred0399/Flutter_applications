@@ -1,0 +1,1 @@
+const baseUrl="https://www.easports.com/fifa/ultimate-team/api/fut/item?";
