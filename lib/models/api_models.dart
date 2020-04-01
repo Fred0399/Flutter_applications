@@ -203,7 +203,9 @@ class Players {
   Players.fromJson(Map<String, dynamic> json) {
     commonName = json['commonName'];
     firstName = json['firstName'];
+    
     lastName = json['lastName'];
+
     league =
     json['league'] != null ? new League.fromJson(json['league']) : null;
     nation =
