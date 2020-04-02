@@ -5,6 +5,7 @@ import '../bloc/player_listing_bloc.dart';
 import '../services/repository.dart';
 import '../widgets/horizontal_bar.dart';
 import './player_listing.dart';
+import '../widgets/search_bar.dart';
 
 class HomePage extends StatefulWidget {
   final PlayerRepository playerRepository;
@@ -46,6 +47,8 @@ class _HomePageState extends State<HomePage> {
         body: Column(
           children: <Widget>[
             HorizontalBar(),
+            SizedBox(height: 10.0),
+            SearchBar(),
             SizedBox(height: 10.0),
             PlayerListing()
           ],

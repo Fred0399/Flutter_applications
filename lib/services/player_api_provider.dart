@@ -6,7 +6,15 @@ import '../urls.dart';
 class PlayerApiProvider {
   Future<List<Players>> fetchPlayersByCountry(String countryID) async {
     final response = await http.get(baseUrl + "country=" + countryID);
+    return parseResponse(response);
+  }
 
+  Future<List<Players>> fetchPlayersByName(String name) async {
+    final response = await http.get(baseUrl + "name=" + name);
+    return parseResponse(response);
+  }
+
+  List<Players> parseResponse(http.Response response) {
     if (response.statusCode >= 400) {
       throw Exception('Failed to load players');
     } else {

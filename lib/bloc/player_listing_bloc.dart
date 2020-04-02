@@ -12,45 +12,31 @@ class PlayerListingBloc extends Bloc<PlayerListingEvent, PlayerListingState> {
   PlayerListingState get initialState => PlayerUninitializedState();
 
   @override
-  Stream<PlayerListingState> mapEventToState(PlayerListingEvent event) async* {
-    if (event is CountrySelectedEvent) {
-      yield PlayerFetchingState();
-      try {
-        final List<Players> players = await playerRepository
-            .fetchPlayersByCountry(event.nationModel.countryId);
-        if (players.length == 0) {
-          yield PlayerEmptyState();
-        } else {
-          yield PlayerFetchedState(players: players);
-        }
-      } catch (_) {
-        yield PlayerErrorState();
-      }
-    }
+  void onTransition(Transition<PlayerListingEvent, PlayerListingState> transition) {
+    super.onTransition(transition);
   }
-  
-}
 
-/*
   @override
-  Stream<PlayerListingState> mapEventToState(
-    PlayerListingState currentState,
-    PlayerListingEvent event,
-  ) async* {
-    if (event is CountrySelectedEvent) {
-      yield PlayerFetchingState();
-      try {
-        final List<Players> players = await playerRepository
-            .fetchPlayersByCountry(event.nationModel.countryId);
-        if (players.length == 0) {
-          yield PlayerEmptyState();
-        } else {
-          yield PlayerFetchedState(players: players);
-        }
-      } catch (_) {
-        yield PlayerErrorState();
+  Stream<PlayerListingState> mapEventToState(PlayerListingEvent event) async* {
+    yield PlayerFetchingState();
+    try {
+      List<Players> players;
+
+      if (event is CountrySelectedEvent) {
+        players = await playerRepository.fetchPlayersByCountry(
+          event.nationModel.countryId,
+        );
+      } else if (event is SearchTextChangedEvent) {
+        players = await playerRepository.fetchPlayersByName(event.searchText);
       }
+
+      if (players.length == 0) {
+        yield PlayerEmptyState();
+      } else {
+        yield PlayerFetchedState(players: players);
+      }
+    } catch (_) {
+      yield PlayerErrorState();
     }
   }
-
-*/
+}

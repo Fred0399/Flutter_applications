@@ -6,4 +6,7 @@ class PlayerRepository {
 
   Future<List<Players>> fetchPlayersByCountry(String countryID) =>
       _playerApiProvider.fetchPlayersByCountry(countryID);
+
+  Future<List<Players>> fetchPlayersByName(String name) =>
+      _playerApiProvider.fetchPlayersByName(name);
 }

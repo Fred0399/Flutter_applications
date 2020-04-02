@@ -9,3 +9,10 @@ class CountrySelectedEvent with PlayerListingEvent {
   CountrySelectedEvent({@required this.nationModel})
       : assert(nationModel != null);
 }
+
+class SearchTextChangedEvent with PlayerListingEvent {
+  final String searchText;
+
+  SearchTextChangedEvent({@required this.searchText})
+      : assert(searchText != null);
+}
