@@ -14,13 +14,18 @@ class HomePage extends StatelessWidget {
         title: Text('Home'),
       ),
       body: Container(
-        child: Center(
-          child: RaisedButton(
-            onPressed: () {
-              BlocProvider.of<AuthenticationBloc>(context).add(LoggedOut());
-            },
-            child: Text('Logout'),
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(BlocProvider.of<AuthenticationBloc>(context).userRepository.getToken),
+            RaisedButton(
+              onPressed: () {
+                BlocProvider.of<AuthenticationBloc>(context).add(LoggedOut());
+              },
+              child: Text('Logout'),
+            ),
+          ],
         ),
       ),
     );

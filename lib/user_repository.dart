@@ -1,9 +1,10 @@
 import 'package:meta/meta.dart';
 class UserRepository{
-
+  String _token;
   Future<String> authenticate({@required String username,@required String password}) async {
     await Future.delayed(Duration(seconds: 2));
-    return 'token';
+    _token=DateTime.now().toString();
+    return _token;
   }
 
   Future<void> deleteToken() async{
@@ -23,4 +24,8 @@ class UserRepository{
     await Future.delayed(Duration(seconds: 1));
     return false;
   }
+
+  String get getToken{
+    return _token;
+  } 
 }
