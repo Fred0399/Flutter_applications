@@ -9,7 +9,7 @@ class CustomRoute<T> extends MaterialPageRoute<T> {
   @override
   Widget buildTransitions(BuildContext context, Animation<double> animation,
       Animation<double> secondaryAnimation, Widget child) {
-    if (settings.isInitialRoute) {
+    if (settings.arguments) {
       return child;
     }
     return FadeTransition(
@@ -27,7 +27,7 @@ class CustomPageTransitionBuilder extends PageTransitionsBuilder {
       Animation<double> animation,
       Animation<double> secondaryAnimation,
       Widget child) {
-    if (route.settings.isInitialRoute) {
+    if (route.settings.name == "/") {
       return child;
     }
     return FadeTransition(
